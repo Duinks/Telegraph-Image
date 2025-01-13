@@ -24,13 +24,13 @@ export async function onRequestPost(context) {
 
         // 根据文件类型选择合适的上传方式
         let apiEndpoint;
-        if (uploadFile.type.startsWith('image/')) {
-            telegramFormData.append("photo", uploadFile);
-            apiEndpoint = 'sendPhoto';
-        } else {
+       // if (uploadFile.type.startsWith('image/')) {
+       //     telegramFormData.append("photo", uploadFile);
+      //      apiEndpoint = 'sendPhoto';
+      //  } else {
             telegramFormData.append("document", uploadFile);
             apiEndpoint = 'sendDocument';
-        }
+        //}
 
         const apiUrl = `https://api.telegram.org/bot${env.TG_Bot_Token}/${apiEndpoint}`;
         console.log('Sending request to:', apiUrl);
